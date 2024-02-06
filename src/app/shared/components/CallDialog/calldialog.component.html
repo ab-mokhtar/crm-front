@@ -1,0 +1,10 @@
+
+<!-- Your Angular Material dialog template -->
+<h2 mat-dialog-title class="bg-primary text-white">Incoming Call</h2>
+<mat-dialog-content class="bg-light text-dark">
+  <p class="lead">Incoming call from {{ data.caller }}</p>
+</mat-dialog-content>
+<mat-dialog-actions class="bg-light text-dark">
+  <button mat-button class="btn btn-success" (click)="onAnswerClick()">Answer</button>
+  <button mat-button class="btn btn-danger" (click)="onRefuseClick()">Refuse</button>
+</mat-dialog-actions>

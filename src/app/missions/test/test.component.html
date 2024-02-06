@@ -1,0 +1,54 @@
+<!-- Tableau pour les missions -->
+<div>
+  <h2>Missions</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let mission of missions">
+      <td>{{ mission.idUser }}</td>
+      <td>{{ mission.name }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Tableau pour les jours inactifs -->
+<div>
+  <h2>Jours Inactifs</h2>
+  <table >
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let inactiveDay of inactiveDays">
+      <td>{{ inactiveDay.id }}</td>
+      <td>{{ inactiveDay.name }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="form-group">
+  <label class="form-label">Etat</label>
+  <select class="form-control" placeholder="" formControlName="status">
+    <option value="">- Choisissez une mission ou un jour inactif -</option>
+    <!-- Itérer sur les missions -->
+    <ng-container *ngFor="let mission of missions">
+      <option [value]="mission.id">{{ mission.name }}</option>
+    </ng-container>
+    <!-- Itérer sur les jours inactifs -->
+    <ng-container *ngFor="let inactiveDay of inactiveDays">
+      <option [value]="inactiveDay.id">{{ inactiveDay.name }}</option>
+    </ng-container>
+  </select>
+</div>
+

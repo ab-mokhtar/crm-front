@@ -1,0 +1,58 @@
+:host {
+    padding-left: 5px; /* Apply padding directly to the host element */
+  }
+  
+  .chat-box {
+    background-color: #fff;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border: 2px #45f solid;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-chat-footer {
+    width: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px #45f solid;
+
+   /* Adjust padding as needed */
+  }
+  
+  .main-chat-header {
+    background-color: #45f;
+    color: #fff;
+    display: flex;
+    padding: 0 5px;
+    line-height: 20px;
+  }
+  
+  .main-chat-body {
+    overflow-y: auto; /* Change to auto to allow scrolling */
+    overflow-x: hidden;
+    flex-grow: 1; /* Allow the body to grow and take available space */
+    padding-bottom: 180px;  }
+  
+  .main-chat-footer input {
+    font-family: "Karla", sans-serif;
+    outline: 0;
+    padding: 0 12px;
+    height: 40px;
+    width: 50%;
+    font-size: 1em;
+  }
+  
+  .main-msg-send {
+    background-color: #45f;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

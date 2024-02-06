@@ -1,0 +1,194 @@
+<!--row open-->
+<!--Page header-->
+<div class="page-header">
+  <div class="page-leftheader">
+    <h4 class="page-title mb-0">Feuille de temps - {{currentMonthName}}</h4>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="javascript:void(0)"><i class="fe fe-layout mr-2 fs-14"></i>Cra</a>
+      </li>
+      <li aria-current="page" class="breadcrumb-item active"><a href="javascript:void(0)">mes activités</a></li>
+    </ol>
+  </div>
+
+</div>
+<!--End Page header-->
+
+<!-- Row -->
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <table width="100%">
+          <tr>
+            <td>
+              <h3 class="card-title">Activité normale</h3>
+            </td>
+            <td>
+              <div *ngIf="filledDayPercent()>100">
+                <ngb-progressbar [animated]="true" [showValue]="true" [striped]="true" [value]="filledDayPercent()"
+                                 type="danger"></ngb-progressbar>
+              </div>
+              <div *ngIf="filledDayPercent()<100">
+                <ngb-progressbar [animated]="true" [showValue]="true" [striped]="true" [value]="filledDayPercent()"
+                                 type="warning"></ngb-progressbar>
+              </div>
+              <div *ngIf="filledDayPercent()==100">
+                <ngb-progressbar [animated]="true" [showValue]="true" [striped]="true" [value]="filledDayPercent()"
+                                 type="success"></ngb-progressbar>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{filledDay()}}/{{totalWorkedDay}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-responsive">
+
+        <form [formGroup]="craFormGroup">
+
+          <!-----Begin Button add group---->
+          <div class="container">
+            <div class="row">
+              <button (click)="addGroup(null,'')" class="btn btn-warning btn-circle" type="button">
+                <i class="fa fa-plus-circle"></i>
+              </button>
+            </div>
+          </div>
+          <!-----End Button add group---->
+
+          <!-----Begin Form Array---->
+          <div *ngIf="craFormGroup">
+            <div *ngFor="let activity of craFormGroup.controls.activities?.value; let i = index; trackBy:trackByFn"
+                 formArrayName="activities">
+
+              <div [formGroupName]="i">
+
+                <table cellpadding="2" cellspacing="2" class="foobar">
+                  <tr></tr>
+                  <tr class="border_bottom">
+                    <!-----Begin input mission---->
+                    <td>
+
+
+                     <!-- <div class="form-group mission-title">
+
+                        <ng-select formControlName="mission" placeholder="Selectionnez une activité">
+                          <ng-option *ngFor="let mission of missions" [value]="mission.id">{{mission.name}}</ng-option>
+                        </ng-select>
+                      </div>-->
+
+                      <div class="form-group mission-title">
+<!--                        <label class="form-label">Etat</label>-->
+                        <select class="form-control" placeholder="sdfsdf" formControlName="mission">
+                          <option value="">- Choisissez une acitivité ou un jour inactif -</option>
+                          <!-- Itérer sur les missions -->
+                          <ng-container *ngFor="let mission of missions">
+                            <option [value]="mission.id">{{ mission.name }}</option>
+                          </ng-container>
+                          <!-- Itérer sur les jours inactifs -->
+                          <ng-container *ngFor="let inactiveDay of inactiveDays">
+                            <option [value]="inactiveDay.id">{{ inactiveDay.name }}</option>
+                          </ng-container>
+                        </select>
+                      </div>
+
+                    </td>
+                    <!-----End input mission----><!--<button (click)="afficherTotal()">Afficher le total</button>-->
+                    <td>
+                      <table>
+                        <thead>
+                        <tr>
+                          <th *ngFor="let col of columns" [innerHTML]="col.name" class="cra-size"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+<!--                          {{activities  | json}}-->
+                          <td *ngFor="let col of columns; let g = index">
+                            <div *ngIf=" !(col.weekend || col.freeDay); else elseBlock">
+                              <input (change)="calculateTotl(g)"
+                                     [ngClass]="isValidFormControl(i,col.prop)?'valid':'invalid'" class="cra-size  "
+                                     formControlName="{{col.prop}}"
+                                     type="text"
+                                     />
+
+                          <!--    <input (change)="calculateTotl(g)"
+                                     [ngClass]="isValidFormControl(i,col.prop)?'valid':'invalid'" class="cra-size  "
+                                     formControlName="{{col.prop}}"
+                                     (input)="afficherTotal()"
+                                     type="text"
+                                     />-->
+                            </div>
+                            <ng-template #elseBlock>
+                              <div class="cra-size free-days form-control"></div>
+                            </ng-template>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-----End Form Array---->
+
+          <!-----Begin Total---->
+         <div>
+            <table cellpadding="2" cellspacing="2" class="foobar">
+              <tr>
+                <td>
+                  <div class="form-group total-title">
+                    Total:
+                  </div>
+                </td>
+                <td>
+                  <table>
+                    <tr>
+                      <td *ngFor="let col of columns; let k = index">
+                        <div *ngIf=" !(col.weekend || col.freeDay); else elseBlock">
+                          <input [ngClass]="isValidTotal(k)?'valid':'invalid'" [value]="totaux[k]" class="cra-size "
+                                 readonly
+                                 type="text"/>
+                        </div>
+                        <ng-template #elseBlock>
+                          <div class="cra-size free-days form-control"></div>
+                        </ng-template>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <br/>
+          <!-----End Total---->
+
+
+          <!-----Begin buton save---->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 bg-light text-right">
+                <button (click)="saveCra()" class="btn btn-primary" type="button">
+                  Sauvegarder l'activité
+                </button>
+
+              </div>
+            </div>
+          </div>
+          <!-----End buton save---->
+        </form>
+      </div>
+      <!-- table-responsive -->
+    </div>
+
+
+  </div>
+
+
+</div>
+<!-- End Row -->

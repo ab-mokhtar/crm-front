@@ -1,0 +1,49 @@
+.icon {
+    position:relative ;
+    font-size: 50px; /* Adjust as needed */
+    z-index: 1;
+padding: 30px;
+    color: black !important;}
+    .redIc {
+        position:relative ;
+        font-size: 50px; /* Adjust as needed */
+        z-index: 1;
+        margin: 30px;
+        color: red !important;}
+::ng-deep{
+    .modal-content{
+        border: 0;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+    }
+    .chat .actions > li{
+        margin:0 0 0 5px;
+    }
+    .dropdown-menu-right.dropdown-menu.show{
+        transform: translate(-120px, 50px) !important;
+    }
+
+    .video-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .video-wrapper {
+        position: relative;
+        width: 400px;
+        height: 300px;
+        border: 2px solid;
+        margin-right: 10px; /* Adjust as needed */
+      }
+      .bg-light {
+        margin-right: 10px;
+      }
+      
+    
+      
+}@import "~bootstrap-icons/font/bootstrap-icons.css";
+// styles.scss
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+// Your other styles...

@@ -1,0 +1,36 @@
+.video-container {
+  position: relative;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#remote-video-container,
+#emitter-video-container {
+  width: 100%;
+  height: 100%;
+}
+
+#emitter-video {
+  width: 200px;
+  height: 150px;
+  border: 2px solid;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(-20%, -120%);
+  z-index: 5; /* Ensure the local image is on top */
+}
+#endcall{
+  border: 2px solid;
+  position: absolute;
+  top: 90%;
+  right: 50%;
+  transform: translate(-20%, -120%);
+  z-index: 5; /* Ensure the local image is on top */
+
+}
+@import "~bootstrap-icons/font/bootstrap-icons.css";

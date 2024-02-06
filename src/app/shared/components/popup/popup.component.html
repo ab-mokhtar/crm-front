@@ -1,0 +1,96 @@
+
+  <div class="chat-box">
+  <div class="main-content-body main-content-body-chat">
+          <div class="main-chat-header">
+              <div class="main-img-user">
+                  <img alt="" src="../../assets/images/users/2.jpg" class="avatar avatar-md brround">
+              </div>
+            
+              <div class="main-chat-msg-name">
+                  <small>{{destination.fullName}}</small>
+              </div>
+            
+              <!-- <nav ngbNav class="nav">
+             
+                  <a href="javascript:void(0)" class="nav-link"><i class="fe fe-more-vertical"></i></a>
+                  <a href="javascript:void(0)" class="nav-link d-none d-sm-block" placement="top" ngbTooltip="Call">
+                      <i class="fe fe-phone"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="nav-link d-none d-sm-block" placement="top" ngbTooltip="Archive">
+                      <i class="fe fe-folder-plus"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="nav-link d-none d-sm-block" placement="top" ngbTooltip="Trash">
+                      <i class="fe fe-trash-2"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="nav-link d-none d-sm-block" placement="top" ngbTooltip="View Info">
+                      <i class="fe fe-alert-octagon"></i>
+                  </a>
+              </nav> -->
+              <ul ngbNav class="nav">
+                <li ngbNavItem>
+                  <a ngbNavLink class="nav-link d-none d-sm-block" placement="top" ngbTooltip="Call" (click)="startCall()">
+                    <i class="fe fe-phone" style="size: 10px;"></i>
+                  </a>
+                </li>
+                <li ngbNavItem>
+                  <a ngbNavLink class="nav-link d-none d-sm-block" (click)="closePopup()">
+                    <i class='far fa-times-circle'></i>
+                  </a>
+                </li>
+              </ul>
+              
+              
+          </div>
+
+          <div class="main-chat-body" id="ChatBodyOfContainer">
+              <div class="content-inner">
+                
+                
+                
+             
+                  <label class="main-chat-time"><span>Today</span></label>
+                  <div *ngFor="let msg of chatMessages">
+                      <ng-container *ngIf="!checkSender(msg.source); else otherColumn">
+
+                  <div class="media">
+                      <div class="main-img-user online"><img alt="" src="../../assets/images/users/14.jpg"
+                              class="avatar avatar-md brround"></div>
+                      <div class="media-body">
+                      
+                          <div class="main-msg-wrapper">
+                              {{ msg.message }}
+                          </div>
+                          <div>
+                              <span>{{pasteDate(msg.date)}}</span>  <a href=""><i
+                                      class="icon ion-android-more-horizontal"></i></a>
+                          </div>
+                      </div>
+                  </div>
+              </ng-container>
+              <ng-template #otherColumn>
+                  <div class="media flex-row-reverse">
+                      <div class="main-img-user online"><img alt="" src="../../assets/images/users/2.jpg"
+                              class="avatar avatar-md brround"></div>
+                      <div class="media-body">
+                          
+                          <div class="main-msg-wrapper">
+                              {{ msg.message }}
+                          </div>
+                          <div>
+                              <span>{{pasteDate(msg.date)}}</span> <a href=""><i
+                                      class="icon ion-android-more-horizontal"></i></a>
+                          </div>
+                      </div>
+                  </div>
+              </ng-template>
+              </div>
+                  
+              </div>
+          </div> </div></div>
+          <div class="main-chat-footer">
+           
+              <input [(ngModel)]="message" class="form-control" placeholder="Type your message here..." type="text"> <button
+                  class="main-msg-send" (click)="sendMessage()"><i class="fa fa-paper-plane-o" onclick=""></i></button>
+         
+     
+    </div>

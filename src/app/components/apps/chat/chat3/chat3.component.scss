@@ -1,0 +1,66 @@
+// 
+
+  .video-container {
+    width: 700px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  
+  .video-wrapper {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden; /* Ensure that the local video doesn't overlap the remote video */
+    height: 100%;
+    width: 400px;
+  }
+  
+  #remote-video-container {
+    flex-grow: 3;
+    position: relative; /* Ensure proper positioning context for absolute positioning */
+  }
+  
+  #emitter-video-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    margin: 10px;
+    width: 200px; /* Adjust the width as needed */
+    height: 150px; /* Adjust the height as needed */
+  }
+  
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    border: 2px solid black; /* Add borders as needed */
+  }
+  .redIc {
+    position: relative;
+    font-size: 30px; /* Adjust the font size of the icon */
+    z-index: 1;
+    margin: 30px; /* Adjust the margin as needed */
+    color: white !important;
+  }
+  
+  #endcall {
+    position: absolute;
+    top: 90%; /* Adjust the vertical position */
+    right: 40%; /* Adjust the horizontal position */
+    transform: translate(-20%, -120%); /* Adjust the translation */
+    z-index: 5; /* Ensure the button is on top of other elements */
+  }
+  
+  #endcall .bi {
+    font-size: 20px; /* Adjust the font size of the icon within the button */
+  }
+  
+  .buttons {
+    font-size: 10px; /* Adjust the font size of other buttons if needed */
+  }
+  
+  @import "~bootstrap-icons/font/bootstrap-icons.css";

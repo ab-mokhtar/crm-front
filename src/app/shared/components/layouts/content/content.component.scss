@@ -1,0 +1,20 @@
+.page-main {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.app-content {
+    flex: 1;
+    margin-right: 250px; /* Add a margin to the right for the sidebar */
+}
+
+.connected-users-container {
+    width: 250px;
+    flex-shrink: 0;
+    border-left: 1px solid #e0e0e0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 900;
+}

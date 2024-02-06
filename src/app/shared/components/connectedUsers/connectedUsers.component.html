@@ -1,0 +1,66 @@
+<!--Page header-->
+
+<!--End Page header-->
+
+<!-- Row -->
+<div class="sidebar2">
+<div class="card">
+    
+          <div class="border-left">
+            <div class="card-body p-0">
+                <div class="main-content-right main-content-left-chat">
+                    <div class="p-4 pb-0 border-bottom">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Search friends..." type="text">
+                            <span class="">
+                                <button class="btn btn-primary br-tl-0 br-bl-0" type="button">
+                                    <span class="input-group-btn"><i class="fa fa-search"></i></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="main-chat-contacts-wrapper">
+                        <label class="form-label mb-2 fs-13">Active Contacts (28)</label>
+                        <div class="main-chat-contacts" id="chatActiveContacts">
+                            <div *ngFor="let user of users">
+                                <div class="main-img-user online"  (click)="chargeDisc(user.username)"><img alt="" src="../../assets/images/users/12.jpg"
+                                        class="avatar avatar-md brround"></div>
+                                <small>{{user.fullName}}</small>
+                            </div>
+                            
+                           
+                            <div class="text-center">
+                                <div class="main-chat-contacts-more">
+                                    20+
+                                </div><small>More</small>
+                            </div>
+                        </div><!-- main-active-contacts -->
+                    </div><!-- main-chat-active-contacts -->
+                    <div class="main-chat-list" id="ChatList1">
+                        <a *ngFor="let user of users" (click)="chargeDisc(user.username)">
+                            <div class="media new">
+                                <div class="main-img-user online">
+                                    <img alt="" src="../../assets/images/users/2.jpg"
+                                        class="avatar avatar-md brround"><span>2</span>                                   
+
+                                </div>
+                                <span>{{user.fullName}}</span>
+                            </div>
+                        </a>
+                     
+                      
+                       
+                      
+                      
+                      
+                    </div><!-- main-chat-list -->
+                </div>
+            </div>
+      </div>
+     
+  
+</div>
+<!-- /Row -->
+<div class="bottom-popups">
+  <app-popup *ngFor="let discussion of openDiscussions,let index = index" [destination]="discussion.destination" [chatMessages]="discussion.chatMessages" [index]="index"></app-popup>
+</div></div>

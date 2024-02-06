@@ -1,0 +1,40 @@
+/* Updated CSS for the fixed right sidebar */
+.sidebar2{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%; /* Set the height to 100% to cover the full height of the viewport */
+    width: 250px; /* Set the width for the sidebar */
+    background-color: #fff; /* Optional: add background color for the sidebar */
+    border-left: 1px solid #e0e0e0; /* Optional: add a border on the left side */
+    overflow-y: auto; /* Allow scrolling in the sidebar if needed */
+    z-index: 900; 
+    /* Set a high z-index to make sure it's above other elements */
+}
+
+/* Adjust the main content area to leave space for the fixed sidebar */
+
+/* Adjust the styles for the bottom popups */
+.bottom-popups {
+    position: fixed;
+    bottom: 0;
+    right: 250px; /* Adjust based on the width of your sidebar */
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    z-index: 1001; /* Set a higher z-index for the popups to ensure they don't overlap with the sidebar */
+}
+
+.app-popup {
+    margin-bottom: 10px; /* Add margin-bottom to create space between popups */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    width: auto;
+    max-width: calc(100% - 20px);
+    z-index: 1002; /* Set a higher z-index for each popup to ensure they don't overlap with the sidebar */
+    margin-left: 20px;
+}
